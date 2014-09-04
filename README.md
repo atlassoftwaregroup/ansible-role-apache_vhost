@@ -1,2 +1,1 @@
-# Under development
-# Do Not Use.
+# Under development. Do Not Use.
