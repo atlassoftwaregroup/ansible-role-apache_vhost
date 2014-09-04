@@ -1,0 +1,16 @@
+---
+apache_conf_path: /usr/local/zend/etc/sites.d/
+apache_listen_port: 80
+vhost_name: example
+apache_vhosts:
+  - {
+      servername: local.dev,
+      documentroot: /opt/apps/example,
+      serveralias: www.example.com,
+      serveradmin: webmaster@example.com,
+      error: /var/log/apache2/example.error.log,
+      log: /var/log/apache2/example.log combined,
+      directoryindex: index.php index.html,
+      extra_parameters: RewriteEngine On,
+      redirect: 'permanent ^/app.php\.php/(.*) /%1'
+    }
