@@ -17,7 +17,7 @@ install:
   # Add ansible.cfg to pick up roles path.
   - "printf '[defaults]\nroles_path = ../' > ansible.cfg"
   # Install required dependencies.
-  - ansible-galaxy install jnakatsui.apache_vhosts
+  - sudo ansible-galaxy install jnakatsui.apache_vhosts
 
 script:
   # Check the role/playbook's syntax.
