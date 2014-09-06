@@ -16,6 +16,8 @@ install:
   - sudo apt-get -y install ansible
   # Add ansible.cfg to pick up roles path.
   - "printf '[defaults]\nroles_path = ../' > ansible.cfg"
+
+before_script:
   # Install required dependencies.
   - sudo ansible-galaxy install jnakatsui.apache_vhosts
 
