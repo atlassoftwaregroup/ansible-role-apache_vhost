@@ -1,10 +1,4 @@
 ---
-- name: enable apache2 mod rewrite
-  apache2_module: name=rewrite state=present
-- name: enable apache2 mod alias
-  apache2_module: name=alias state=present
-- name: enable apache2 mod ssl
-  apache2_module: name=ssl state=present
 - name: Add apache vhosts configuration.
   template: >
     src=vhosts.conf.j2
