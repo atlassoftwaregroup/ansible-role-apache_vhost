@@ -3,7 +3,7 @@ apache_conf_path: /usr/local/zend/etc/sites.d/
 apache_listen_port: 80
 apache_vhosts:
   - {
-      vhost_name: example
+      vhost_name: example,
       servername: local.dev,
       documentroot: /opt/apps/example,
       serveralias: www.example.com,
@@ -15,8 +15,8 @@ apache_vhosts:
       redirect: 'permanent ^/app.php\.php/(.*) /%1'
     }
   - {
-      vhost_name: example2
-      servername: local.another
+      vhost_name: example2,
+      servername: local.another,
       documentroot: /opt/apps/example,
       serveralias: www.example.com,
       serveradmin: webmaster@example.com,
