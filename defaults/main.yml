@@ -11,6 +11,8 @@ apache_vhosts:
       error: /var/log/apache2/example.error.log,
       log: /var/log/apache2/example.log combined,
       directoryindex: index.php index.html,
+      sslcert: /home/ubuntu/app-ssl/server.crt,
+      sslkey: /home/ubuntu/app-ssl/server.key,
       extra_parameters: RewriteEngine On,
       redirect: 'permanent ^/app.php\.php/(.*) /%1'
     }
