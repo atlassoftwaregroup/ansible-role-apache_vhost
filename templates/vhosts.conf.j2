@@ -42,6 +42,14 @@
     </Directory>
   {% endif %}
 
+  {% if vhost.sslcert is defined %}
+    SSLEngine on
+    SSLCertificateFile {{ vhost.sslcert }}
+  {% endif %}
+  {% if vhost.sslkey is defined %}
+    SSLCertificateKeyFile {{ vhost.sslkey }}
+  {% endif %}
+
   RewriteEngine On
   RedirectMatch {{ vhost.redirect }}
   
