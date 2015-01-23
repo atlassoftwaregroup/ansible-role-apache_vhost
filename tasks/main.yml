@@ -1,7 +1,10 @@
 ---
 - name: Add apache vhosts configuration.
-  template: >
-    src=vhosts.conf.j2
-    dest={{ apache_conf_path }}/vhost_{{ vhost_name }}.conf
-    owner=root group=root mode=644
+  template:
+    src: "vhosts.conf.j2"
+    dest: "{{ apache_conf_path }}/vhost_{{ vhost_name }}.conf"
+    backup: "no"
+    owner: "root"
+    group: "root"
+    mode: "644"
   notify: restart apache
