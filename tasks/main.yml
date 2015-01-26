@@ -2,7 +2,7 @@
 - name: Add apache vhosts configuration.
   template:
     src: "vhosts.conf.j2"
-    dest: "{{ apache_conf_path }}/vhost_{{ vhost_name }}.conf"
+    dest: "{{ apache_conf_path }}/vhost_{{ apache_vhosts.vhost_name }}.conf"
     backup: "no"
     owner: "root"
     group: "root"
