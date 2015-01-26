@@ -2,27 +2,25 @@
 apache_conf_path: /usr/local/zend/etc/sites.d/
 apache_listen_port: 80
 vhost_filenames:
-  - example
+  - example1
   - example2
 apache_vhosts:
   - {
-      vhost_name: example,
-      servername: local.dev,
-      documentroot: /opt/apps/example,
+      vhost_name: example1,
+      servername: local.another,
+      documentroot: /var/www/,
       serveralias: www.example.com,
       serveradmin: webmaster@example.com,
       error: /var/log/apache2/example.error.log,
       log: /var/log/apache2/example.log combined,
       directoryindex: index.php index.html,
-      sslcert: /home/ubuntu/app-ssl/server.crt,
-      sslkey: /home/ubuntu/app-ssl/server.key,
       extra_parameters: RewriteEngine On,
       redirect: 'permanent ^/app.php\.php/(.*) /%1'
     }
   - {
       vhost_name: example2,
       servername: local.another,
-      documentroot: /opt/apps/example,
+      documentroot: /var/www/,
       serveralias: www.example.com,
       serveradmin: webmaster@example.com,
       error: /var/log/apache2/example.error.log,
@@ -31,3 +29,19 @@ apache_vhosts:
       extra_parameters: RewriteEngine On,
       redirect: 'permanent ^/app.php\.php/(.*) /%1'
     }
+
+# ssl example
+#   - {
+#       vhost_name: example3,
+#       servername: local.dev,
+#       documentroot: /opt/apps/example,
+#       serveralias: www.example.com,
+#       serveradmin: webmaster@example.com,
+#       error: /var/log/apache2/example.error.log,
+#       log: /var/log/apache2/example.log combined,
+#       directoryindex: index.php index.html,
+#       sslcert: /home/ubuntu/app-ssl/server.crt,
+#       sslkey: /home/ubuntu/app-ssl/server.key,
+#       extra_parameters: RewriteEngine On,
+#       redirect: 'permanent ^/app.php\.php/(.*) /%1'
+#     }
