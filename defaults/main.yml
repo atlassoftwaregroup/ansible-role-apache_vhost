@@ -1,6 +1,9 @@
 ---
 apache_conf_path: /usr/local/zend/etc/sites.d/
 apache_listen_port: 80
+vhost_filenames:
+  - example
+  - example2
 apache_vhosts:
   - {
       vhost_name: example,
