@@ -7,5 +7,5 @@
     owner: "root"
     group: "root"
     mode: "644"
-  with_items: vhost_filenames
+  with_items: apache_sites.keys()
   notify: restart apache
