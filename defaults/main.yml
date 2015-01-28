@@ -1,34 +1,23 @@
 ---
 apache_conf_path: /usr/local/zend/etc/sites.d/
 apache_listen_port: 80
-vhost_filenames:
-  - example1
-  - example2
-apache_vhosts:
-  - {
-      vhost_name: example1,
-      servername: local.another,
-      documentroot: /var/www/,
-      serveralias: www.example.com,
-      serveradmin: webmaster@example.com,
-      error: /var/log/apache2/example.error.log,
-      log: /var/log/apache2/example.log combined,
-      directoryindex: index.php index.html,
-      extra_parameters: RewriteEngine On,
-      redirect: 'permanent ^/app.php\.php/(.*) /%1'
-    }
-  - {
-      vhost_name: example2,
-      servername: local.another,
-      documentroot: /var/www/,
-      serveralias: www.example.com,
-      serveradmin: webmaster@example.com,
-      error: /var/log/apache2/example.error.log,
-      log: /var/log/apache2/example.log combined,
-      directoryindex: index.php index.html,
-      extra_parameters: RewriteEngine On,
-      redirect: 'permanent ^/app.php\.php/(.*) /%1'
-    }
+apache_sites:
+  example:
+    - ServerAdmin webmaster@example.com
+    - ServerName example.com
+    - DirectoryIndex index.php index.html
+    - DocumentRoot /opt/apps/example
+    - <Directory "/opt/apps/example/htdocs">
+    - Options Indexes FollowSymLinks
+    - AllowOverride All
+    - Order allow,deny
+    - Allow from all
+    - </Directory>
+    - ErrorLog /var/log/apache2/example.error.log
+    - LogLevel warn
+    - CustomLog /var/log/apache2/example.log combined
+    - RewriteEngine On
+    - AddType application/x-httpd-php .php
 
 # ssl example
 #   - {

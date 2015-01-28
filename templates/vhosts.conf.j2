@@ -1,67 +1,9 @@
 {# Set up VirtualHosts - servername and documentroot are required. #}
-{% for vhost in apache_vhosts %}
 <VirtualHost *:{{ apache_listen_port }}>
-{% if vhost.serveradmin is defined %}
-  ServerAdmin {{ vhost.serveradmin }}
-{% endif %}
-  ServerName {{ vhost.servername }}
-{% if vhost.serveralias is defined %}
-  ServerAlias {{ vhost.serveralias }}
-{% endif %}
-{% if vhost.301 is defined %}
-  Redirect 301 {{ vhost.301 }}
-{% endif %}
+  {% for v in apache_sites[item] %}
 
-  DirectoryIndex {{ vhost.directoryindex }}  
+    {% if v != "" %}{{ v.replace(";",";\n ").replace(" {"," {\n ").replace(" }"," \n }\n") }}{% if v.find('{') == -1%};
 
-  DocumentRoot {{ vhost.documentroot }}
-  <Directory "{{ vhost.documentroot }}">
-    Options Indexes FollowSymLinks
-    AllowOverride All
-    Order allow,deny
-    Allow from all
-  </Directory>
-
-  {% if vhost.alias is defined %}
-    Alias {{ vhost.alias }}
-    <Directory "{{ vhost.diralias }}">
-      Options Indexes FollowSymLinks
-      AllowOverride All
-      Order allow,deny
-      Allow from all
-    </Directory>
-  {% endif %}
-
-  {% if vhost.alias2 is defined %}
-    Alias {{ vhost.alias2 }}
-    <Directory "{{ vhost.diralias2 }}">
-      Options Indexes FollowSymLinks
-      AllowOverride All
-      Order allow,deny
-      Allow from all
-    </Directory>
-  {% endif %}
-
-  {% if vhost.sslcert is defined %}
-    SSLEngine on
-    SSLCertificateFile {{ vhost.sslcert }}
-  {% endif %}
-  {% if vhost.sslkey is defined %}
-    SSLCertificateKeyFile {{ vhost.sslkey }}
-  {% endif %}
-
-  {% if vhost.redirect is defined %}
-    RewriteEngine On
-    RedirectMatch {{ vhost.redirect }}
-  {% endif %}
-  
-  ErrorLog {{ vhost.error }}
-  LogLevel warn
-  CustomLog {{ vhost.log }}
-  # ServerSgnature Off
-{% if vhost.extra_parameters is defined %}
-  {{ vhost.extra_parameters }}
-{% endif %}
-AddType application/x-httpd-php .php
+  {% endif %}{% endif %}
+  {% endfor %}
 </VirtualHost>
-{% endfor %}
