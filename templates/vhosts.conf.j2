@@ -50,8 +50,10 @@
     SSLCertificateKeyFile {{ vhost.sslkey }}
   {% endif %}
 
-  RewriteEngine On
-  RedirectMatch {{ vhost.redirect }}
+  {% if vhost.redirect is defined %}
+    RewriteEngine On
+    RedirectMatch {{ vhost.redirect }}
+  {% endif %}
   
   ErrorLog {{ vhost.error }}
   LogLevel warn
