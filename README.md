@@ -1,5 +1,5 @@
 [![Build Status](https://travis-ci.org/jnakatsui/ansible-role-apache_vhost.svg?branch=master)](https://travis-ci.org/jnakatsui/ansible-role-apache_vhost)
-apache\_vhosts
+apache_vhosts
 =========
 Configures apache vhosts files
 
@@ -25,5 +25,4 @@ Example Playbook
 
 License
 -------
-MIT
-
+The source code is licensed under GPL v3.
